@@ -34,9 +34,9 @@
 
 <body>
 <div id="app">
-	<a class="btn">上传图片</a>
-	<my-upload url="/temp" :only-single="true"
-		:value="true" field="img" key="0" max-size="500" :only-img="true" :other-params="otherParams"></my-upload>
+	<a class="btn" @click="toggleShow">上传图片</a>
+	<my-upload url="http://httpbin.org/post" :only-single="true"
+		:value="show" field="img" key="0" max-size="500" :only-img="true" :other-params="otherParams"></my-upload>
 </div>
 
 <script src="demo-src.js"></script>

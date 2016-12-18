@@ -1,24 +1,30 @@
 <template>
-<div class="vue-upload" v-show="value">
-	<div class="drop-area"
+<div class="vue-upload-file" v-show="value">
+	<div class="vuf-drop-area"
 		@click="handleClick"
 		@dragleave="handleDragleave"
 		@dragover="handleDragover"
 		@dragenter="handleDragenter"
 		@click="handleClick"
 		@drop="handleDrop">
-		<i class="icon" v-show="!loading">
-			<i class="icon-arrow"></i>
-			<i class="icon-body"></i>
-			<i class="icon-bottom"></i>
+		<i class="vuf-icon1" v-show="loading != 1">
+			<i class="vuf-icon1-arrow"></i>
+			<i class="vuf-icon1-body"></i>
+			<i class="vuf-icon1-bottom"></i>
 		</i>
-		<span class="hint" v-show="!loading">点击选择，或将图片拖动至此处</span>
-		<span class="loading" v-show="loading">正在上传……</span>
-		<span class="no-supported-hint" v-show="!isSupported">浏览器不支持该功能，请使用IE10以上或其他现在浏览器！</span>
+		<span class="vuf-hint" v-show="loading !== 1">{{ lang.hint }}</span>
+		<span class="vuf-loading" v-show="loading === 1">{{ lang.loading }}</span>
+		<span class="vuf-progress" v-show="loading === 1" :style="progressStyle"></span>
+		<span class="vuf-no-supported-hint" v-show="!isSupported">{{ lang.noSupported }}</span>
 		<input type="file" v-show="false" @change="handleChange" v-el:fileinput>
 	</div>
-	<div class="error" v-show="hasError">
-		错误：{{ errorMsg }}
+	<div class="vuf-error" v-show="hasError">
+		<i class="vuf-icon2"></i>
+		{{ errorMsg }}
+	</div>
+	<div class="vuf-success" v-show="loading === 2">
+		<i class="vuf-icon3"></i>
+		{{ lang.success }}
 	</div>
 </div>
 
@@ -61,24 +67,56 @@ export default {
 		// 其他要上传文件附带的数据，对象格式
 		otherParams: {
 			'default': null
+		},
+		langConf: {
+			type: Object,
+			'default': null
 		}
 	},
 	data() {
-		let isSupported = true;
+		let that = this,
+			{langConf} = that,
+			isSupported = true,
+			lang = {
+				hint: '点击，或将文件拖动至此处',
+				loading: '正在上传……',
+				noSupported: '浏览器不支持该功能，请使用IE10以上或其他现在浏览器！',
+				success: '上传成功',
+				error: {
+					onlyImg: '仅限图片格式',
+					onlySingle: '仅限单文件上传',
+					outOfSize: '单文件大小不能超过 ',
+				}
+			};
+		if(langConf){
+			Object.assign(lang, langConf);
+		}
 		if(typeof FormData != 'function'){
 			isSupported = false;
 		}
 		return {
-			loading: false,
+			loading: 0, //0未开始 1正在 2成功 3错误
+			lang,
 			isSupported,
 			hasError: false,
 			files: '',
+			progress: 0,
 			errorMsg: ''
 		}
 	},
 	computed: {
-		className() {
-
+		progressStyle() {
+			let {progress} = this;
+			return {
+				width: progress + '%'
+			}
+		}
+	},
+	watch: {
+		'value': function(newValue){
+			if(newValue){
+				this.reset();
+			}
 		}
 	},
 	methods: {
@@ -87,12 +125,11 @@ export default {
 		},
 		handleDrop(e){
 			e.preventDefault();
-			let that = this,
-				files = e.dataTransfer.files;
-			that.reset();
-			if(that.checkFiles(files)){
-				that.files = files;
-				that.upload();
+			if(this.loading !== 1){
+				let files = e.dataTransfer.files;
+				if(this.checkFiles(files)){
+					this.upload(files);
+				}
 			}
 		},
 		handleDragenter(e){
@@ -104,36 +141,49 @@ export default {
 
 		},
 		handleClick(e){
-			if(e.target !== this.$els.fileinput){
-				e.preventDefault();
-				this.$els.fileinput.click();
+			if(this.loading !== 1){
+				if(e.target !== this.$els.fileinput){
+					e.preventDefault();
+					this.$els.fileinput.click();
+				}
 			}
 		},
 		handleChange(e){
-			let that = this,
-				files = e.target.files;
-			that.reset();
-			if(that.checkFiles(files)){
-				that.files = files;
-				that.upload();
+			if(this.loading !== 1){
+				let files = e.target.files;
+				if(this.checkFiles(files)){
+					this.upload(files);
+				}
 			}
 		},
 		checkFiles(files){
 			let that = this,
-				{maxSize, onlyImg} = that,
+				{lang, maxSize, onlyImg, onlySingle} = that,
 				fileNum = files.length;
+			// 是否文件为空
 			if(fileNum == 0){
 				return false;
 			}
+
+			// 仅限单文件？
+			if(onlySingle && fileNum > 1){
+				that.hasError = true;
+				that.errorMsg = lang.error.onlySingle;
+				return false;
+			}
+
 			for (let i = 0; i < fileNum; i++) {
+				// 仅限图片
 				if(onlyImg && files[i].type.indexOf('image') === -1){
 					that.hasError = true;
-					that.errorMsg = '仅限图片上传';
+					that.errorMsg = lang.error.onlyImg;
 					return false;
 				}
+
+				// 超出大小
 				if(files[i].size/1024 > maxSize){
 					that.hasError = true;
-					that.errorMsg = '单文件大小不能超过' + maxSize + 'kb';
+					that.errorMsg = lang.error.outOfSize + maxSize + 'kb';
 					return false;
 				}
 			}
@@ -141,25 +191,42 @@ export default {
 		},
 		reset(){
 			let that = this;
+			that.loading = 0;
 			that.hasError = false;
 			that.errorMsg = '';
-			that.file = '';
+			that.progress = 0;
 		},
-		upload(){
+		upload(files){
 			let that = this,
-				{url, files, otherParams, onlySingle, field, key} = this,
+				{url, otherParams, onlySingle, field, key} = this,
 				fmData = new FormData();
+
+			// 重置数据及状态
+			that.reset();
+
+			// 判断是否单文件
 			if(onlySingle){
 				fmData.append(field, files[0]);
 			}else{
 				fmData.append(field, files);
 			}
+
+			// 添加其他参数
 			if(typeof otherParams == 'object' && otherParams){
 				Object.keys(otherParams).forEach((k)=>{
 					fmData.append(k, otherParams[k]);
 				})
 			}
-			that.loading = true;
+
+			// 监听进度回调
+			const uploadProgress = function(event){
+				if(event.lengthComputable) {
+					that.progress = 100 * Math.round(event.loaded) / event.total;
+				}
+			};
+
+			// 上传文件
+			that.loading = 1;
 			new Promise(function (resolve, reject) {
 				let client = new XMLHttpRequest();
 				client.open('POST', url, true);
@@ -173,17 +240,23 @@ export default {
 						reject(this.status);
 					}
 				};
+		        client.upload.addEventListener("progress", uploadProgress, false); //监听进度
 				client.setRequestHeader('Content-type', 'application/x-www-form-urlencoded;charset=utf-8');
 				client.send(fmData);
-			}).then(function (resData) {
-				that.loading = false;
-				that.$dispatch('uploadEnd', resData, this.field, this.key);
-			}, function (sts) {
-				that.loading = false;
-				that.hasError = true;
-				that.errorMsg = '上传图片失败';
-				that.$dispatch('uploadFail', sts, this.field, this.key);
-			});
+			}).then(
+				// 上传成功
+				function (resData) {
+					that.loading = 2;
+					that.$dispatch('uploadSuccess', resData, field, key);
+				},
+				// 上传失败
+				function (sts) {
+					that.loading = 3;
+					that.hasError = true;
+					that.errorMsg = '上传图片失败';
+					that.$dispatch('uploadFail', sts, field, key);
+				}
+			);
 		}
 	}
 }

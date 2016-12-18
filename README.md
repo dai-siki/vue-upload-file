@@ -4,17 +4,16 @@ a file upload component for vue. (vue文件上传组件)
 
 ## 正在完善，可以参考，不推荐使用
 
-## demo
+## demo（示例）
 
-[click me](http://dai-siki.github.io/vue-upload-file/example/demo.html).
+[click me（点我）](http://dai-siki.github.io/vue-upload-file/example/demo.html).
 
-
-## Env
+## Env（配置环境）
 
 vue.js@1.0 + webpack + es6 + scss
 
 
-## install
+## install（安装）
 
 #### npm （还未上传
 
@@ -22,24 +21,41 @@ vue.js@1.0 + webpack + es6 + scss
 $ npm install vue-upload-file
 ```
 
-## Usage
+## Usage（使用）
 
-#### 相关参数
+#### props（参数）
 
 | 名称              | 类型               | 默认             | 说明                                         |
-| ----------------- | ----------------- | ---------------- | --------------------------------------------- |
-| field             | String            | 'upload'                 | 域，上传文件name，触发事件会带上（如果一个页面多个图片上传控件，可以做区分    |
+| ----------------| ---------------- | ---------------| ------------------------------------------|
+| field       | String   | 'upload'     | 域，上传文件name，触发事件会带上（如果一个页面多个图片上传控件，可以做区分    |
 | url             | String            |  ''                | 上传地址    |
 | otherParams             | Object            |  null                | 要附带的其他数据，如 {k:v}    |
 | value             | Boolean            |                  | 是否显示控件    |
 | key             |             |   0               | 类似于id，触发事件会带上（如果一个页面多个图片上传控件，可以做区分    |
-| maxSize             | Number            |  2048                | 单文件大小限制    |
+| maxSize             | Number            |  2048               | 单文件大小限制（kb）    |
 | onlyImg             | Boolean            |  false                | 仅限图片    |
 | onlySingle             | Boolean            | false                 | 仅限单文件上传    |
+| langConf             | Object            | defaultLang                 | 语言包配置    |
+
+#### defaultLang（默认语言包）
+```js
+
+let defaultLang = {
+	hint: '点击，或将文件拖动至此处',
+	loading: '正在上传……',
+	noSupported: '浏览器不支持该功能，请使用IE10以上或其他现在浏览器！',
+	success: '上传成功',
+	error: {
+		onlyImg: '仅限图片格式',
+		onlySingle: '仅限单文件上传',
+		outOfSize: '单文件大小不能超过 ',
+	}
+};
+
+```
 
 
-
-#### 示例(vue@1.0+)
+#### example(vue@1.0+)
 
 ```html
 <style media="screen">
@@ -50,8 +66,11 @@ $ npm install vue-upload-file
 
 <div id="app">
 	<a class="btn">上传图片</a>
-	<my-upload url="/temp" :only-single="true"
-		:value="true" field="img" key="0" max-size="500" :only-img="true" :other-params="otherParams"></my-upload>
+	<my-upload url="/temp" field="img" key="0" max-size="500"
+		:only-single="true"
+		:value="true"
+		:only-img="true"
+		:other-params="otherParams"></my-upload>
 </div>
 
 <script>
@@ -62,6 +81,7 @@ $ npm install vue-upload-file
 	new Vue({
 		el: '#app',
 		data: {
+			show: true,
 			otherParams: {
 				token: '123456798',
 				name: 'img'
@@ -69,6 +89,39 @@ $ npm install vue-upload-file
 		},
 		components: {
 			'my-upload': myUpload
+		},
+		methods: {
+			toggleShow() {
+				this.show = !this.show;
+			}
+		},
+		events: {
+			/**
+			 * 上传成功
+			 *
+			 * [param] data 返回的数据
+			 * [param] field 你设置的域
+			 * [param] key 你设置的键
+			 */
+			uploadSuccess(data, field, key){
+				console.log('-------- 上传成功 --------');
+				console.log(data);
+				console.log('field: ' + field);
+				console.log('key: ' + key);
+			},
+			/**
+			 * 上传失败
+			 *
+			 * [param] data 返回的状态值
+			 * [param] field 你设置的域
+			 * [param] key 你设置的键
+			 */
+			uploadFail(status, field, key){
+				console.log('-------- 上传失败 --------');
+				console.log(status);
+				console.log('field: ' + field);
+				console.log('key: ' + key);
+			}
 		}
 	});
 

@@ -1,8 +1,8 @@
 {
   "name": "vue-upload-file",
   "version": "1.0.0",
-  "description": "a file upload component for vue",
-  "main": "switch.vue",
+  "description": "a file upload component for vue. (vue文件上传组件)",
+  "main": "upload.vue",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,4 +1,20 @@
-.vue-upload {
+@-webkit-keyframes vue-upload-progress {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: 60px 0; } }
+
+@-webkit-keyframes vue-upload {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0) translatey(-60px);
+            transform: scale(0) translatey(-60px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1) translatey(0);
+            transform: scale(1) translatey(0); } }
+
+.vue-upload-file {
   position: absolute;
   display: block;
   -webkit-box-sizing: border-box;
@@ -11,58 +27,88 @@
   background-color: #fff;
   -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
           box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
-  border-top: 2px solid rgba(0, 0, 0, 0.8); }
-  .vue-upload::before {
+  border-top: 2px solid rgba(0, 0, 0, 0.8);
+  -webkit-animation: vue-upload 0.15s ease-in;
+          animation: vue-upload 0.15s ease-in; }
+  .vue-upload-file::before {
     position: absolute;
     content: '';
     top: -8px;
     left: 132px;
     width: 0;
     height: 0;
-    border-bottom: 8px solid rgba(0, 0, 0, 0.8);
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent; }
-  .vue-upload .drop-area {
+    border-bottom: 7px solid rgba(0, 0, 0, 0.8);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent; }
+  .vue-upload-file .vuf-drop-area {
     position: relative;
-    height: 80px;
+    padding: 10px;
+    height: 60px;
     background-color: rgba(0, 0, 0, 0.03);
     text-align: center;
     border: 1px dashed #ddd; }
-    .vue-upload .drop-area .icon {
+    .vue-upload-file .vuf-drop-area .vuf-icon1 {
       display: block;
-      margin: 6px auto;
-      width: 36px;
-      height: 36px;
+      margin: 0 auto 6px auto;
+      width: 32px;
+      height: 32px;
       overflow: hidden; }
-      .vue-upload .drop-area .icon .icon-arrow {
+      .vue-upload-file .vuf-drop-area .vuf-icon1 .vuf-icon1-arrow {
         display: block;
         margin: 0 auto;
         width: 0;
         height: 0;
-        border-bottom: 12.6px solid #999;
-        border-left: 12.6px solid transparent;
-        border-right: 12.6px solid transparent; }
-      .vue-upload .drop-area .icon .icon-body {
+        border-bottom: 11.2px solid #999;
+        border-left: 11.2px solid transparent;
+        border-right: 11.2px solid transparent; }
+      .vue-upload-file .vuf-drop-area .vuf-icon1 .vuf-icon1-body {
         display: block;
-        width: 10.8px;
-        height: 12.6px;
+        width: 9.6px;
+        height: 11.2px;
         margin: 0 auto;
         background-color: #999; }
-      .vue-upload .drop-area .icon .icon-bottom {
+      .vue-upload-file .vuf-drop-area .vuf-icon1 .vuf-icon1-bottom {
         -webkit-box-sizing: border-box;
                 box-sizing: border-box;
         display: block;
-        height: 10.8px;
+        height: 9.6px;
         border: 5px solid #999;
         border-top: none; }
-    .vue-upload .drop-area .hint {
+    .vue-upload-file .vuf-drop-area .vuf-hint {
       font-size: 14px;
       color: #999; }
-    .vue-upload .drop-area .loading {
+    .vue-upload-file .vuf-drop-area .vuf-loading {
       font-size: 16px;
       color: #999;
-      line-height: 80px; }
-    .vue-upload .drop-area .no-supported-hint {
+      line-height: 30px; }
+    .vue-upload-file .vuf-drop-area .vuf-progress {
+      position: relative;
+      margin-top: 12px;
+      display: block;
+      height: 2px;
+      background-color: #4a7;
+      -webkit-box-shadow: 0 1px 3px 0 rgba(68, 170, 119, 0.3);
+              box-shadow: 0 1px 3px 0 rgba(68, 170, 119, 0.3);
+      -webkit-transition: width 0.5s ease;
+      transition: width 0.5s ease;
+      background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+      background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+      -webkit-animation: vue-upload-progress 0.5s ease infinite;
+              animation: vue-upload-progress 0.5s ease infinite; }
+      .vue-upload-file .vuf-drop-area .vuf-progress::after {
+        content: '';
+        position: absolute;
+        display: block;
+        top: -2px;
+        right: -2px;
+        width: 4px;
+        height: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        -webkit-box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);
+                box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);
+        border-radius: 100%;
+        background-color: #4a7; }
+    .vue-upload-file .vuf-drop-area .vuf-no-supported-hint {
       display: block;
       position: absolute;
       top: 0;
@@ -75,14 +121,53 @@
       text-align: center;
       color: #888;
       font-size: 14px; }
-    .vue-upload .drop-area:hover {
+    .vue-upload-file .vuf-drop-area:hover {
       cursor: pointer;
       border-color: #ccc;
       background-color: rgba(0, 0, 0, 0.06); }
-      .vue-upload .drop-area:hover .hint {
+      .vue-upload-file .vuf-drop-area:hover .vuf-hint {
         color: #777; }
-  .vue-upload .error {
+  .vue-upload-file .vuf-error, .vue-upload-file .vuf-success {
+    display: block;
     font-size: 14px;
     line-height: 24px;
-    color: #d50;
-    text-align: center; }
+    height: 24px;
+    color: #d10;
+    text-align: center;
+    vertical-align: top; }
+  .vue-upload-file .vuf-success {
+    color: #4a7; }
+  .vue-upload-file .vuf-icon3 {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    top: 4px; }
+    .vue-upload-file .vuf-icon3::after {
+      position: absolute;
+      top: 3px;
+      left: 6px;
+      width: 6px;
+      height: 10px;
+      border-width: 0 2px 2px 0;
+      border-color: #4a7;
+      border-style: solid;
+      -webkit-transform: rotate(45deg);
+      content: ''; }
+  .vue-upload-file .vuf-icon2 {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    top: 4px; }
+    .vue-upload-file .vuf-icon2::before, .vue-upload-file .vuf-icon2::after {
+      content: '';
+      position: absolute;
+      top: 9px;
+      left: 4px;
+      width: 13px;
+      height: 2px;
+      background-color: #d10;
+      -webkit-transform: rotate(45deg); }
+    .vue-upload-file .vuf-icon2::after {
+      -webkit-transform: rotate(-45deg); }

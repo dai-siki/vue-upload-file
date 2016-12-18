@@ -1,8 +1,27 @@
 $i_c: #999;
-$i_w: 36px;
-$i_h: 36px;
+$i_w: 32px;
+$i_h: 32px;
+$c_succ: #4a7;
+$c_warn: #cc0;
+$c_error: #d10;
 
-.vue-upload {
+@-webkit-keyframes vue-upload-progress {
+	0% {background-position: 0 0;}
+	100% {background-position: 60px 0;}
+}
+
+@-webkit-keyframes vue-upload {
+	0% {
+		opacity: 0;
+		transform: scale(0) translatey(-60px);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1) translatey(0);
+	}
+}
+
+.vue-upload-file {
 	position: absolute;
 	display: block;
 	box-sizing: border-box;
@@ -14,6 +33,7 @@ $i_h: 36px;
 	background-color: #fff;
 	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
 	border-top: 2px solid rgba(0, 0, 0, 0.8);
+	animation: vue-upload 0.15s ease-in;
 
 	&::before {
 		position: absolute;
@@ -22,26 +42,28 @@ $i_h: 36px;
 		left: 132px;
 		width: 0;
 		height: 0;
-		border-bottom: 8px solid rgba(0, 0, 0, 0.8);
-		border-left: 8px solid transparent;
-		border-right: 8px solid transparent;
+		border-bottom: 7px solid rgba(0, 0, 0, 0.8);
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;
 	}
 
-	.drop-area {
+	.vuf-drop-area {
 		position: relative;
-		height: 80px;
+		padding: 10px;
+		height: 60px;
 		background-color: rgba(0, 0, 0, 0.03);
 		text-align: center;
 		border: 1px dashed #ddd;
 
-		.icon {
+		// 上传图标
+		.vuf-icon1 {
 			display: block;
-			margin: 6px auto;
+			margin: 0 auto 6px auto;
 			width: $i_w;
 			height: $i_h;
 			overflow: hidden;
 
-			.icon-arrow {
+			.vuf-icon1-arrow {
 				display: block;
 				margin: 0 auto;
 				width: 0;
@@ -51,7 +73,7 @@ $i_h: 36px;
 				border-right: $i_h * 0.35 solid transparent;
 			}
 
-			.icon-body {
+			.vuf-icon1-body {
 				display: block;
 				width: $i_w * 0.3;
 				height: $i_h * 0.35;
@@ -59,7 +81,7 @@ $i_h: 36px;
 				background-color: $i_c;
 			}
 
-			.icon-bottom {
+			.vuf-icon1-bottom {
 				box-sizing: border-box;
 				display: block;
 				height: $i_h * 0.3;
@@ -68,18 +90,44 @@ $i_h: 36px;
 			}
 		}
 
-		.hint {
+		.vuf-hint {
 			font-size: 14px;
 			color: #999;
 		}
 
-		.loading {
+		.vuf-loading {
 			font-size: 16px;
 			color: #999;
-			line-height: 80px;
+			line-height: 30px;
 		}
 
-		.no-supported-hint {
+		.vuf-progress {
+			position: relative;
+			margin-top: 12px;
+			display: block;
+			height: 2px;
+			background-color: $c_succ;
+			box-shadow: 0 1px 3px 0 rgba($c_succ, 0.3);
+			transition: width 0.5s ease;
+			background-image: linear-gradient(-45deg,rgba(255,255,255,.2) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.2)  50%,rgba(255,255,255,.2) 75%,transparent 75%,transparent);
+			animation: vue-upload-progress 0.5s ease infinite;
+
+			&::after{
+				content: '';
+				position: absolute;
+				display: block;
+				top: -2px;
+				right: -2px;
+				width: 4px;
+				height: 4px;
+				border: 1px solid rgba(#fff, 0.6);
+				box-shadow: 0 1px 4px 0 rgba($c_succ, 0.7);
+				border-radius: 100%;
+				background-color: $c_succ;
+			}
+		}
+
+		.vuf-no-supported-hint {
 			display: block;
 			position: absolute;
 			top: 0;
@@ -99,16 +147,69 @@ $i_h: 36px;
 			border-color: #ccc;
 			background-color: rgba(0, 0, 0, 0.06);
 
-			.hint {
+			.vuf-hint {
 				color: #777;
 			}
 		}
 	}
 
-	.error {
+	.vuf-error, .vuf-success {
+		display: block;
 		font-size: 14px;
 		line-height: 24px;
-		color: #d50;
+		height: 24px;
+		color: $c_error;
 		text-align: center;
+		vertical-align: top;
+	}
+
+	.vuf-success {
+		color: $c_succ;
+	}
+
+	// 成功图标
+	.vuf-icon3{
+		position: relative;
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		top: 4px;
+
+		&::after{
+			position: absolute;
+			top: 3px;
+			left: 6px;
+			width: 6px;
+			height: 10px;
+			border-width: 0 2px 2px 0;
+			border-color: $c_succ;
+			border-style: solid;
+			-webkit-transform: rotate(45deg);
+			content: '';
+		}
+	}
+
+	// 错误图标
+	.vuf-icon2{
+		position: relative;
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		top: 4px;
+
+		&::before, &::after{
+			content: '';
+			position: absolute;
+			top: 9px;
+			left: 4px;
+			width: 13px;
+			height: 2px;
+			background-color: $c_error;
+			-webkit-transform: rotate(45deg);
+		}
+
+		&::after{
+			-webkit-transform: rotate(-45deg);
+		}
 	}
 }
