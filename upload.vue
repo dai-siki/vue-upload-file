@@ -127,6 +127,7 @@ export default {
 			e.preventDefault();
 			if(this.loading !== 1){
 				let files = e.dataTransfer.files;
+				this.reset();
 				if(this.checkFiles(files)){
 					this.upload(files);
 				}
@@ -151,6 +152,7 @@ export default {
 		handleChange(e){
 			if(this.loading !== 1){
 				let files = e.target.files;
+				this.reset();
 				if(this.checkFiles(files)){
 					this.upload(files);
 				}
@@ -200,9 +202,6 @@ export default {
 			let that = this,
 				{url, otherParams, onlySingle, field, key} = this,
 				fmData = new FormData();
-
-			// 重置数据及状态
-			that.reset();
 
 			// 判断是否单文件
 			if(onlySingle){

@@ -38,7 +38,7 @@ $ npm install vue-upload-file
 | onlySingle             | Boolean            | false                 | 仅限单文件上传    |
 | langConf             | Object            | defaultLang                 | 语言包配置    |
 
-#### defaultLang（默认语言包）
+#### default langConf（默认语言包）
 ```js
 
 let defaultLang = {
@@ -112,7 +112,7 @@ let defaultLang = {
 			/**
 			 * 上传失败
 			 *
-			 * [param] data 返回的状态值
+			 * [param] status 返回的状态值
 			 * [param] field 你设置的域
 			 * [param] key 你设置的键
 			 */

@@ -18961,6 +18961,7 @@
 				e.preventDefault();
 				if (this.loading !== 1) {
 					var files = e.dataTransfer.files;
+					this.reset();
 					if (this.checkFiles(files)) {
 						this.upload(files);
 					}
@@ -18983,6 +18984,7 @@
 			handleChange: function handleChange(e) {
 				if (this.loading !== 1) {
 					var files = e.target.files;
+					this.reset();
 					if (this.checkFiles(files)) {
 						this.upload(files);
 					}
@@ -19036,8 +19038,6 @@
 				    field = this.field,
 				    key = this.key,
 				    fmData = new FormData();
-
-				that.reset();
 
 				if (onlySingle) {
 					fmData.append(field, files[0]);
