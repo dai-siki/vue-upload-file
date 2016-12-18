@@ -2,11 +2,11 @@
 
 a file upload component for vue. (vue文件上传组件)
 
-## 正在完善，可以参考，不推荐使用
 
 ## demo（示例）
 
 [click me（点我）](http://dai-siki.github.io/vue-upload-file/example/demo.html).
+
 
 ## Env（配置环境）
 
@@ -15,11 +15,12 @@ vue.js@1.0 + webpack + es6 + scss
 
 ## install（安装）
 
-#### npm （还未上传
+#### npm
 
 ```shell
 $ npm install vue-upload-file
 ```
+
 
 ## Usage（使用）
 
@@ -54,8 +55,7 @@ let defaultLang = {
 
 ```
 
-
-#### example(vue@1.0+)
+#### example(使用示例)
 
 ```html
 <style media="screen">
@@ -126,6 +126,5 @@ let defaultLang = {
 	});
 
 </script>
-
 
 ```
