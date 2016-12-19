@@ -1,6 +1,6 @@
 {
   "name": "vue-upload-file",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a file upload component for vue. (vue文件上传组件)",
   "main": "upload.vue",
   "scripts": {

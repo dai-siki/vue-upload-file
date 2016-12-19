@@ -4,17 +4,21 @@ $i_h: 32px;
 $c_succ: #4a7;
 $c_warn: #cc0;
 $c_error: #d10;
+@keyframes vue-upload-progress {
+	0% {
+		background-position: 0 0;
+	}
 
-@-webkit-keyframes vue-upload-progress {
-	0% {background-position: 0 0;}
-	100% {background-position: 60px 0;}
+	100% {
+		background-position: 60px 0;
+	}
 }
-
-@-webkit-keyframes vue-upload {
+@keyframes vue-upload {
 	0% {
 		opacity: 0;
 		transform: scale(0) translatey(-60px);
 	}
+
 	100% {
 		opacity: 1;
 		transform: scale(1) translatey(0);
@@ -58,7 +62,7 @@ $c_error: #d10;
 		// 上传图标
 		.vuf-icon1 {
 			display: block;
-			margin: 0 auto 6px auto;
+			margin: 0 auto 6px;
 			width: $i_w;
 			height: $i_h;
 			overflow: hidden;
@@ -93,6 +97,7 @@ $c_error: #d10;
 		.vuf-hint {
 			font-size: 14px;
 			color: #999;
+			line-height: 30px;
 		}
 
 		.vuf-loading {
@@ -109,10 +114,10 @@ $c_error: #d10;
 			background-color: $c_succ;
 			box-shadow: 0 1px 3px 0 rgba($c_succ, 0.3);
 			transition: width 0.5s ease;
-			background-image: linear-gradient(-45deg,rgba(255,255,255,.2) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.2)  50%,rgba(255,255,255,.2) 75%,transparent 75%,transparent);
+			background-image: linear-gradient(-45deg, rgba(#fff, 0.2) 25%, transparent 25%, transparent 50%, rgba(#fff, 0.2) 50%, rgba(#fff, 0.2) 75%, transparent 75%, transparent);
 			animation: vue-upload-progress 0.5s ease infinite;
 
-			&::after{
+			&::after {
 				content: '';
 				position: absolute;
 				display: block;
@@ -153,7 +158,8 @@ $c_error: #d10;
 		}
 	}
 
-	.vuf-error, .vuf-success {
+	.vuf-error,
+	.vuf-success {
 		display: block;
 		font-size: 14px;
 		line-height: 24px;
@@ -168,14 +174,14 @@ $c_error: #d10;
 	}
 
 	// 成功图标
-	.vuf-icon3{
+	.vuf-icon3 {
 		position: relative;
 		display: inline-block;
 		width: 20px;
 		height: 20px;
 		top: 4px;
 
-		&::after{
+		&::after {
 			position: absolute;
 			top: 3px;
 			left: 6px;
@@ -184,20 +190,21 @@ $c_error: #d10;
 			border-width: 0 2px 2px 0;
 			border-color: $c_succ;
 			border-style: solid;
-			-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
 			content: '';
 		}
 	}
 
 	// 错误图标
-	.vuf-icon2{
+	.vuf-icon2 {
 		position: relative;
 		display: inline-block;
 		width: 20px;
 		height: 20px;
 		top: 4px;
 
-		&::before, &::after{
+		&::after,
+		&::before {
 			content: '';
 			position: absolute;
 			top: 9px;
@@ -205,11 +212,11 @@ $c_error: #d10;
 			width: 13px;
 			height: 2px;
 			background-color: $c_error;
-			-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
 		}
 
-		&::after{
-			-webkit-transform: rotate(-45deg);
+		&::after {
+			transform: rotate(-45deg);
 		}
 	}
 }

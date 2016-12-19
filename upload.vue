@@ -240,7 +240,7 @@ export default {
 					}
 				};
 		        client.upload.addEventListener("progress", uploadProgress, false); //监听进度
-				client.setRequestHeader('Content-type', 'application/x-www-form-urlencoded;charset=utf-8');
+				// client.setRequestHeader('Content-type', 'application/x-www-form-urlencoded;charset=utf-8');
 				client.send(fmData);
 			}).then(
 				// 上传成功

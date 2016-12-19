@@ -4,7 +4,23 @@
   100% {
     background-position: 60px 0; } }
 
+@keyframes vue-upload-progress {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: 60px 0; } }
+
 @-webkit-keyframes vue-upload {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0) translatey(-60px);
+            transform: scale(0) translatey(-60px); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1) translatey(0);
+            transform: scale(1) translatey(0); } }
+
+@keyframes vue-upload {
   0% {
     opacity: 0;
     -webkit-transform: scale(0) translatey(-60px);
@@ -49,7 +65,7 @@
     border: 1px dashed #ddd; }
     .vue-upload-file .vuf-drop-area .vuf-icon1 {
       display: block;
-      margin: 0 auto 6px auto;
+      margin: 0 auto 6px;
       width: 32px;
       height: 32px;
       overflow: hidden; }
@@ -76,7 +92,8 @@
         border-top: none; }
     .vue-upload-file .vuf-drop-area .vuf-hint {
       font-size: 14px;
-      color: #999; }
+      color: #999;
+      line-height: 30px; }
     .vue-upload-file .vuf-drop-area .vuf-loading {
       font-size: 16px;
       color: #999;
@@ -127,7 +144,8 @@
       background-color: rgba(0, 0, 0, 0.06); }
       .vue-upload-file .vuf-drop-area:hover .vuf-hint {
         color: #777; }
-  .vue-upload-file .vuf-error, .vue-upload-file .vuf-success {
+  .vue-upload-file .vuf-error,
+  .vue-upload-file .vuf-success {
     display: block;
     font-size: 14px;
     line-height: 24px;
@@ -153,6 +171,8 @@
       border-color: #4a7;
       border-style: solid;
       -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+              transform: rotate(45deg);
       content: ''; }
   .vue-upload-file .vuf-icon2 {
     position: relative;
@@ -160,7 +180,7 @@
     width: 20px;
     height: 20px;
     top: 4px; }
-    .vue-upload-file .vuf-icon2::before, .vue-upload-file .vuf-icon2::after {
+    .vue-upload-file .vuf-icon2::after, .vue-upload-file .vuf-icon2::before {
       content: '';
       position: absolute;
       top: 9px;
@@ -168,6 +188,10 @@
       width: 13px;
       height: 2px;
       background-color: #d10;
-      -webkit-transform: rotate(45deg); }
+      -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+              transform: rotate(45deg); }
     .vue-upload-file .vuf-icon2::after {
-      -webkit-transform: rotate(-45deg); }
+      -webkit-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+              transform: rotate(-45deg); }
