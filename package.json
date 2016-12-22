@@ -1,6 +1,6 @@
 {
   "name": "vue-upload-file",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a file upload component for vue. (vue文件上传组件)",
   "main": "upload.vue",
   "scripts": {
@@ -14,7 +14,9 @@
     "vue-file-upload",
     "vue-upload",
     "vue-uploader",
-    "vue-image-upload"
+    "vue-image-upload",
+    "图片上传",
+    "文件上传"
   ],
   "author": "dai-siki",
   "license": "ISC",

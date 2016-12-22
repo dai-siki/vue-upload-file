@@ -66,7 +66,7 @@ gulp.task('serve', function() {
 		}
 	});
 	gulp.watch([
-		'./example/demo.js', './*.vue', './scss/*.scss'
+		'./example/demo.js', './*.vue', './*.css'
 	], ['js']);
 	gulp.watch(['./scss/*.scss'], ['css']);
 	gulp.watch([

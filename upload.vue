@@ -14,7 +14,9 @@
 		</i>
 		<span class="vuf-hint" v-show="loading !== 1">{{ lang.hint }}</span>
 		<span class="vuf-loading" v-show="loading === 1">{{ lang.loading }}</span>
-		<span class="vuf-progress" v-show="loading === 1" :style="progressStyle"></span>
+		<div class="vuf-progress-wrap" v-show="loading === 1">
+			<span class="vuf-progress" :style="progressStyle"></span>
+		</div>
 		<span class="vuf-no-supported-hint" v-show="!isSupported">{{ lang.noSupported }}</span>
 		<input type="file" v-show="false" @change="handleChange" v-el:fileinput>
 	</div>
@@ -80,7 +82,7 @@ export default {
 			lang = {
 				hint: '点击，或将文件拖动至此处',
 				loading: '正在上传……',
-				noSupported: '浏览器不支持该功能，请使用IE10以上或其他现在浏览器！',
+				noSupported: '浏览器不支持该功能，请使用IE10以上或其他现代浏览器！',
 				success: '上传成功',
 				error: {
 					onlyImg: '仅限图片格式',
@@ -240,7 +242,6 @@ export default {
 					}
 				};
 		        client.upload.addEventListener("progress", uploadProgress, false); //监听进度
-				// client.setRequestHeader('Content-type', 'application/x-www-form-urlencoded;charset=utf-8');
 				client.send(fmData);
 			}).then(
 				// 上传成功

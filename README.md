@@ -1,31 +1,29 @@
 # vue-upload-file
 
-a file upload component for vue. (vue文件上传组件)
+A file upload component for vue. (vue文件上传组件)
 
 
-## demo（示例）
+## Demo（示例）
+[Click me （点我）](http://dai-siki.github.io/vue-upload-file/example/demo.html).
 
-[click me（点我）](http://dai-siki.github.io/vue-upload-file/example/demo.html).
+
+## Brower compatibility（浏览器兼容）
+IE10+
 
 
 ## Env（配置环境）
+vue@1.0 + webpack + es6
 
-vue.js@1.0 + webpack + es6 + scss
 
-
-## install（安装）
-
+## Install（安装）
 #### npm
-
 ```shell
 $ npm install vue-upload-file
 ```
 
 
 ## Usage（使用）
-
-#### props（参数）
-
+#### Props（参数）
 | 名称              | 类型               | 默认             | 说明                                         |
 | ----------------| ---------------- | ---------------| ------------------------------------------|
 | field       | String   | 'upload'     | 域，上传文件name，触发事件会带上（如果一个页面多个图片上传控件，可以做区分    |
@@ -38,13 +36,12 @@ $ npm install vue-upload-file
 | onlySingle             | Boolean            | false                 | 仅限单文件上传    |
 | langConf             | Object            | defaultLang                 | 语言包配置    |
 
-#### default langConf（默认语言包）
+#### Default Lang（默认语言包）
 ```js
-
 let defaultLang = {
 	hint: '点击，或将文件拖动至此处',
 	loading: '正在上传……',
-	noSupported: '浏览器不支持该功能，请使用IE10以上或其他现在浏览器！',
+	noSupported: '浏览器不支持该功能，请使用IE10以上或其他现代浏览器！',
 	success: '上传成功',
 	error: {
 		onlyImg: '仅限图片格式',
@@ -52,11 +49,9 @@ let defaultLang = {
 		outOfSize: '单文件大小不能超过 ',
 	}
 };
-
 ```
 
-#### example(使用示例)
-
+#### Example(使用示例)
 ```html
 <style media="screen">
 	#app {
@@ -99,13 +94,13 @@ let defaultLang = {
 			/**
 			 * 上传成功
 			 *
-			 * [param] data 返回的数据
+			 * [param] jsonData 返回的数据（-----注意：已进行json转码-----）
 			 * [param] field 你设置的域
 			 * [param] key 你设置的键
 			 */
-			uploadSuccess(data, field, key){
+			uploadSuccess(jsonData, field, key){
 				console.log('-------- 上传成功 --------');
-				console.log(data);
+				console.log(jsonData);
 				console.log('field: ' + field);
 				console.log('key: ' + key);
 			},
@@ -126,5 +121,4 @@ let defaultLang = {
 	});
 
 </script>
-
 ```

@@ -1,16 +1,16 @@
-@-webkit-keyframes vue-upload-progress {
+@-webkit-keyframes vue_upload_progress {
   0% {
     background-position: 0 0; }
   100% {
     background-position: 60px 0; } }
 
-@keyframes vue-upload-progress {
+@keyframes vue_upload_progress {
   0% {
     background-position: 0 0; }
   100% {
     background-position: 60px 0; } }
 
-@-webkit-keyframes vue-upload {
+@-webkit-keyframes vue_upload {
   0% {
     opacity: 0;
     -webkit-transform: scale(0) translatey(-60px);
@@ -20,7 +20,7 @@
     -webkit-transform: scale(1) translatey(0);
             transform: scale(1) translatey(0); } }
 
-@keyframes vue-upload {
+@keyframes vue_upload {
   0% {
     opacity: 0;
     -webkit-transform: scale(0) translatey(-60px);
@@ -45,8 +45,8 @@
   -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
           box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
   border-top: 2px solid rgba(0, 0, 0, 0.8);
-  -webkit-animation: vue-upload 0.15s ease-in;
-          animation: vue-upload 0.15s ease-in; }
+  -webkit-animation: vue_upload 0.15s ease-in;
+          animation: vue_upload 0.15s ease-in; }
   .vue-upload-file::before {
     position: absolute;
     content: '';
@@ -99,33 +99,36 @@
       font-size: 16px;
       color: #999;
       line-height: 30px; }
-    .vue-upload-file .vuf-drop-area .vuf-progress {
-      position: relative;
-      margin-top: 12px;
+    .vue-upload-file .vuf-drop-area .vuf-progress-wrap {
       display: block;
-      height: 2px;
-      background-color: #4a7;
-      -webkit-box-shadow: 0 1px 3px 0 rgba(68, 170, 119, 0.3);
-              box-shadow: 0 1px 3px 0 rgba(68, 170, 119, 0.3);
-      -webkit-transition: width 0.5s ease;
-      transition: width 0.5s ease;
-      background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
-      background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
-      -webkit-animation: vue-upload-progress 0.5s ease infinite;
-              animation: vue-upload-progress 0.5s ease infinite; }
-      .vue-upload-file .vuf-drop-area .vuf-progress::after {
-        content: '';
-        position: absolute;
+      background-color: rgba(0, 0, 0, 0.15); }
+      .vue-upload-file .vuf-drop-area .vuf-progress-wrap .vuf-progress {
+        position: relative;
+        margin-top: 12px;
         display: block;
-        top: -2px;
-        right: -2px;
-        width: 4px;
-        height: 4px;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        -webkit-box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);
-                box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);
-        border-radius: 100%;
-        background-color: #4a7; }
+        height: 2px;
+        background-color: #4a7;
+        -webkit-box-shadow: 0 1px 3px 0 rgba(68, 170, 119, 0.3);
+                box-shadow: 0 1px 3px 0 rgba(68, 170, 119, 0.3);
+        -webkit-transition: width 0.5s ease;
+        transition: width 0.5s ease;
+        background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+        background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+        -webkit-animation: vue_upload_progress 0.5s ease infinite;
+                animation: vue_upload_progress 0.5s ease infinite; }
+        .vue-upload-file .vuf-drop-area .vuf-progress-wrap .vuf-progress::after {
+          content: '';
+          position: absolute;
+          display: block;
+          top: -2px;
+          right: -2px;
+          width: 4px;
+          height: 4px;
+          border: 1px solid rgba(255, 255, 255, 0.6);
+          -webkit-box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);
+                  box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);
+          border-radius: 100%;
+          background-color: #4a7; }
     .vue-upload-file .vuf-drop-area .vuf-no-supported-hint {
       display: block;
       position: absolute;
