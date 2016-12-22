@@ -27,10 +27,10 @@ $ npm install vue-upload-file
 | 名称              | 类型               | 默认             | 说明                                         |
 | ----------------| ---------------- | ---------------| ------------------------------------------|
 | field       | String   | 'upload'     | 域，上传文件name，触发事件会带上（如果一个页面多个图片上传控件，可以做区分    |
+| key             |             |   0               | 类似于id，触发事件会带上（如果一个页面多个图片上传控件，可以做区分    |
+| value             | Boolean            |                  | 是否显示控件    |
 | url             | String            |  ''                | 上传地址    |
 | otherParams             | Object            |  null                | 要附带的其他数据，如 {k:v}    |
-| value             | Boolean            |                  | 是否显示控件    |
-| key             |             |   0               | 类似于id，触发事件会带上（如果一个页面多个图片上传控件，可以做区分    |
 | maxSize             | Number            |  2048               | 单文件大小限制（kb）    |
 | onlyImg             | Boolean            |  false                | 仅限图片    |
 | onlySingle             | Boolean            | false                 | 仅限单文件上传    |
@@ -60,8 +60,8 @@ let defaultLang = {
 </style>
 
 <div id="app">
-	<a class="btn">上传图片</a>
-	<my-upload url="/temp" field="img" key="0" max-size="500"
+	<a class="btn" @click="toggleShow">上传图片</a>
+	<my-upload url="/upload" field="img" key="1" max-size="500"
 		:only-single="true"
 		:value="true"
 		:only-img="true"
