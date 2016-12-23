@@ -2,13 +2,13 @@
   0% {
     background-position: 0 0; }
   100% {
-    background-position: 60px 0; } }
+    background-position: 40px 0; } }
 
 @keyframes vue_upload_progress {
   0% {
     background-position: 0 0; }
   100% {
-    background-position: 60px 0; } }
+    background-position: 40px 0; } }
 
 @-webkit-keyframes vue_upload {
   0% {
@@ -114,6 +114,7 @@
         transition: width 0.5s ease;
         background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
         background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+        background-size: 40px 40px;
         -webkit-animation: vue_upload_progress 0.5s ease infinite;
                 animation: vue_upload_progress 0.5s ease infinite; }
         .vue-upload-file .vuf-drop-area .vuf-progress-wrap .vuf-progress::after {

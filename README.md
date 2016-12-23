@@ -43,6 +43,7 @@ let defaultLang = {
 	loading: '正在上传……',
 	noSupported: '浏览器不支持该功能，请使用IE10以上或其他现代浏览器！',
 	success: '上传成功',
+	fail: '上传失败',
 	error: {
 		onlyImg: '仅限图片格式',
 		onlySingle: '仅限单文件上传',

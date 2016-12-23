@@ -29,7 +29,6 @@
 		{{ lang.success }}
 	</div>
 </div>
-
 </template>
 
 <script>
@@ -84,6 +83,7 @@ export default {
 				loading: '正在上传……',
 				noSupported: '浏览器不支持该功能，请使用IE10以上或其他现代浏览器！',
 				success: '上传成功',
+				fail: '上传失败',
 				error: {
 					onlyImg: '仅限图片格式',
 					onlySingle: '仅限单文件上传',
@@ -202,7 +202,7 @@ export default {
 		},
 		upload(files){
 			let that = this,
-				{url, otherParams, onlySingle, field, key} = this,
+				{url, otherParams, onlySingle, field, key, lang} = this,
 				fmData = new FormData();
 
 			// 判断是否单文件
@@ -253,7 +253,7 @@ export default {
 				function (sts) {
 					that.loading = 3;
 					that.hasError = true;
-					that.errorMsg = '上传图片失败';
+					that.errorMsg = lang.fail;
 					that.$dispatch('uploadFail', sts, field, key);
 				}
 			);

@@ -10,7 +10,7 @@ $c_error: #d10;
 	}
 
 	100% {
-		background-position: 60px 0;
+		background-position: 40px 0;
 	}
 }
 @keyframes vue_upload {
@@ -120,6 +120,7 @@ $c_error: #d10;
 				box-shadow: 0 1px 3px 0 rgba($c_succ, 0.3);
 				transition: width 0.5s ease;
 				background-image: linear-gradient(-45deg, rgba(#fff, 0.2) 25%, transparent 25%, transparent 50%, rgba(#fff, 0.2) 50%, rgba(#fff, 0.2) 75%, transparent 75%, transparent);
+				background-size: 40px 40px;
 				animation: vue_upload_progress 0.5s ease infinite;
 
 				&::after {
