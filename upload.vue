@@ -5,7 +5,6 @@
 		@dragleave="handleDragleave"
 		@dragover="handleDragover"
 		@dragenter="handleDragenter"
-		@click="handleClick"
 		@drop="handleDrop">
 		<i class="vuf-icon1" v-show="loading != 1">
 			<i class="vuf-icon1-arrow"></i>
