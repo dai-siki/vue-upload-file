@@ -48,6 +48,14 @@ export default {
 		value: {
 			'default': true
 		},
+		url: {
+			type: String,
+			'default': ''
+		},
+		// 其他要上传文件附带的数据，对象格式
+		params: {
+			'default': null
+		},
 		// 单文件大小限制
 		maxSize: {
 			'default': 2048
@@ -60,37 +68,50 @@ export default {
 		onlySingle: {
 			'default': false
 		},
-		url: {
+		// 语言包
+		langType: {
 			type: String,
-			'default': ''
+			'default': 'zh'
 		},
-		// 其他要上传文件附带的数据，对象格式
-		otherParams: {
-			'default': null
-		},
-		langConf: {
+		// 语言扩展
+		langExt: {
 			type: Object,
 			'default': null
 		}
 	},
 	data() {
 		let that = this,
-			{langConf} = that,
+			{langExt, langType} = that,
 			isSupported = true,
-			lang = {
-				hint: '点击，或将文件拖动至此处',
-				loading: '正在上传……',
-				noSupported: '浏览器不支持该功能，请使用IE10以上或其他现代浏览器！',
-				success: '上传成功',
-				fail: '上传失败',
-				error: {
-					onlyImg: '仅限图片格式',
-					onlySingle: '仅限单文件上传',
-					outOfSize: '单文件大小不能超过 ',
-				}
-			};
-		if(langConf){
-			Object.assign(lang, langConf);
+			langBags = {
+				zh: {
+					hint: '点击，或将文件拖动至此处',
+					loading: '正在上传……',
+					noSupported: '浏览器不支持该功能，请使用IE10以上或其他现代浏览器！',
+					success: '上传成功',
+					fail: '上传失败',
+					error: {
+						onlyImg: '仅限图片格式',
+						onlySingle: '仅限单文件上传',
+						outOfSize: '单文件大小不能超过 ',
+					}
+				},
+				en: {
+				   hint: 'Click, or drag the file here',
+				   loading: 'Uploading……',
+				   noSupported: 'Browser does not support, please use IE10+ or other browsers',
+				   success: 'Upload success',
+				   fail: 'Upload failed',
+				   error: {
+					   onlyImg: 'Images only',
+					   onlySingle: 'Single file only',
+					   outOfSize: 'File exceeds size limit: '
+				   }
+			   }
+		   },
+		   lang = langBags[langType] ?  langBags[langType] : langBags['zh'];
+		if(langExt){
+			Object.assign(lang, langExt);
 		}
 		if(typeof FormData != 'function'){
 			isSupported = false;
@@ -201,7 +222,7 @@ export default {
 		},
 		upload(files){
 			let that = this,
-				{url, otherParams, onlySingle, field, key, lang} = this,
+				{url, params, onlySingle, field, key, lang} = this,
 				fmData = new FormData();
 
 			// 判断是否单文件
@@ -212,9 +233,9 @@ export default {
 			}
 
 			// 添加其他参数
-			if(typeof otherParams == 'object' && otherParams){
-				Object.keys(otherParams).forEach((k)=>{
-					fmData.append(k, otherParams[k]);
+			if(typeof params == 'object' && params){
+				Object.keys(params).forEach((k)=>{
+					fmData.append(k, params[k]);
 				})
 			}
 

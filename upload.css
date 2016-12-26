@@ -2,13 +2,13 @@
   0% {
     background-position: 0 0; }
   100% {
-    background-position: 40px 0; } }
+    background-position: 10px 0; } }
 
 @keyframes vue_upload_progress {
   0% {
     background-position: 0 0; }
   100% {
-    background-position: 40px 0; } }
+    background-position: 10px 0; } }
 
 @-webkit-keyframes vue_upload {
   0% {
@@ -101,12 +101,12 @@
       line-height: 30px; }
     .vue-upload-file .vuf-drop-area .vuf-progress-wrap {
       display: block;
-      background-color: rgba(0, 0, 0, 0.15); }
+      background-color: rgba(0, 0, 0, 0.14); }
       .vue-upload-file .vuf-drop-area .vuf-progress-wrap .vuf-progress {
         position: relative;
         margin-top: 12px;
         display: block;
-        height: 2px;
+        height: 3px;
         background-color: #4a7;
         -webkit-box-shadow: 0 1px 3px 0 rgba(68, 170, 119, 0.3);
                 box-shadow: 0 1px 3px 0 rgba(68, 170, 119, 0.3);
@@ -114,17 +114,17 @@
         transition: width 0.5s ease;
         background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
         background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
-        background-size: 40px 40px;
-        -webkit-animation: vue_upload_progress 0.5s ease infinite;
-                animation: vue_upload_progress 0.5s ease infinite; }
+        background-size: 10px 10px;
+        -webkit-animation: vue_upload_progress 0.3s linear infinite;
+                animation: vue_upload_progress 0.3s linear infinite; }
         .vue-upload-file .vuf-drop-area .vuf-progress-wrap .vuf-progress::after {
           content: '';
           position: absolute;
           display: block;
           top: -2px;
           right: -2px;
-          width: 4px;
-          height: 4px;
+          width: 5px;
+          height: 5px;
           border: 1px solid rgba(255, 255, 255, 0.6);
           -webkit-box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);
                   box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);

@@ -68,7 +68,8 @@
 	new _vue2.default({
 		el: '#app',
 		data: {
-			show: true,
+			show1: false,
+			show2: false,
 			otherParams: {
 				token: '123456798',
 				name: 'img'
@@ -78,8 +79,11 @@
 			'my-upload': _upload2.default
 		},
 		methods: {
-			toggleShow: function toggleShow() {
-				this.show = !this.show;
+			toggleShow1: function toggleShow1() {
+				this.show1 = !this.show1;
+			},
+			toggleShow2: function toggleShow2() {
+				this.show2 = !this.show2;
 			}
 		},
 		events: {
@@ -18553,7 +18557,7 @@
 
 
 	// module
-	exports.push([module.id, "@-webkit-keyframes vue_upload_progress {\n  0% {\n    background-position: 0 0; }\n  100% {\n    background-position: 40px 0; } }\n\n@keyframes vue_upload_progress {\n  0% {\n    background-position: 0 0; }\n  100% {\n    background-position: 40px 0; } }\n\n@-webkit-keyframes vue_upload {\n  0% {\n    opacity: 0;\n    -webkit-transform: scale(0) translatey(-60px);\n            transform: scale(0) translatey(-60px); }\n  100% {\n    opacity: 1;\n    -webkit-transform: scale(1) translatey(0);\n            transform: scale(1) translatey(0); } }\n\n@keyframes vue_upload {\n  0% {\n    opacity: 0;\n    -webkit-transform: scale(0) translatey(-60px);\n            transform: scale(0) translatey(-60px); }\n  100% {\n    opacity: 1;\n    -webkit-transform: scale(1) translatey(0);\n            transform: scale(1) translatey(0); } }\n\n.vue-upload-file[_v-1e700349] {\n  position: absolute;\n  display: block;\n  box-sizing: border-box;\n  z-index: 999;\n  left: 50%;\n  margin-top: 12px;\n  margin-left: -140px;\n  padding: 12px 16px;\n  width: 280px;\n  background-color: #fff;\n  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);\n  border-top: 2px solid rgba(0, 0, 0, 0.8);\n  -webkit-animation: vue_upload 0.15s ease-in;\n          animation: vue_upload 0.15s ease-in; }\n  .vue-upload-file[_v-1e700349]::before {\n    position: absolute;\n    content: '';\n    top: -8px;\n    left: 132px;\n    width: 0;\n    height: 0;\n    border-bottom: 7px solid rgba(0, 0, 0, 0.8);\n    border-left: 7px solid transparent;\n    border-right: 7px solid transparent; }\n  .vue-upload-file .vuf-drop-area[_v-1e700349] {\n    position: relative;\n    padding: 10px;\n    height: 60px;\n    background-color: rgba(0, 0, 0, 0.03);\n    text-align: center;\n    border: 1px dashed #ddd; }\n    .vue-upload-file .vuf-drop-area .vuf-icon1[_v-1e700349] {\n      display: block;\n      margin: 0 auto 6px;\n      width: 32px;\n      height: 32px;\n      overflow: hidden; }\n      .vue-upload-file .vuf-drop-area .vuf-icon1 .vuf-icon1-arrow[_v-1e700349] {\n        display: block;\n        margin: 0 auto;\n        width: 0;\n        height: 0;\n        border-bottom: 11.2px solid #999;\n        border-left: 11.2px solid transparent;\n        border-right: 11.2px solid transparent; }\n      .vue-upload-file .vuf-drop-area .vuf-icon1 .vuf-icon1-body[_v-1e700349] {\n        display: block;\n        width: 9.6px;\n        height: 11.2px;\n        margin: 0 auto;\n        background-color: #999; }\n      .vue-upload-file .vuf-drop-area .vuf-icon1 .vuf-icon1-bottom[_v-1e700349] {\n        box-sizing: border-box;\n        display: block;\n        height: 9.6px;\n        border: 5px solid #999;\n        border-top: none; }\n    .vue-upload-file .vuf-drop-area .vuf-hint[_v-1e700349] {\n      font-size: 14px;\n      color: #999;\n      line-height: 30px; }\n    .vue-upload-file .vuf-drop-area .vuf-loading[_v-1e700349] {\n      font-size: 16px;\n      color: #999;\n      line-height: 30px; }\n    .vue-upload-file .vuf-drop-area .vuf-progress-wrap[_v-1e700349] {\n      display: block;\n      background-color: rgba(0, 0, 0, 0.15); }\n      .vue-upload-file .vuf-drop-area .vuf-progress-wrap .vuf-progress[_v-1e700349] {\n        position: relative;\n        margin-top: 12px;\n        display: block;\n        height: 2px;\n        background-color: #4a7;\n        box-shadow: 0 1px 3px 0 rgba(68, 170, 119, 0.3);\n        -webkit-transition: width 0.5s ease;\n        transition: width 0.5s ease;\n        background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);\n        background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);\n        background-size: 40px 40px;\n        -webkit-animation: vue_upload_progress 0.5s ease infinite;\n                animation: vue_upload_progress 0.5s ease infinite; }\n        .vue-upload-file .vuf-drop-area .vuf-progress-wrap .vuf-progress[_v-1e700349]::after {\n          content: '';\n          position: absolute;\n          display: block;\n          top: -2px;\n          right: -2px;\n          width: 4px;\n          height: 4px;\n          border: 1px solid rgba(255, 255, 255, 0.6);\n          box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);\n          border-radius: 100%;\n          background-color: #4a7; }\n    .vue-upload-file .vuf-drop-area .vuf-no-supported-hint[_v-1e700349] {\n      display: block;\n      position: absolute;\n      top: 0;\n      left: 0;\n      padding: 10px 0;\n      width: 100%;\n      height: 60px;\n      line-height: 30px;\n      background-color: #eee;\n      text-align: center;\n      color: #888;\n      font-size: 14px; }\n    .vue-upload-file .vuf-drop-area[_v-1e700349]:hover {\n      cursor: pointer;\n      border-color: #ccc;\n      background-color: rgba(0, 0, 0, 0.06); }\n      .vue-upload-file .vuf-drop-area:hover .vuf-hint[_v-1e700349] {\n        color: #777; }\n  .vue-upload-file .vuf-error[_v-1e700349],\n  .vue-upload-file .vuf-success[_v-1e700349] {\n    display: block;\n    font-size: 14px;\n    line-height: 24px;\n    height: 24px;\n    color: #d10;\n    text-align: center;\n    vertical-align: top; }\n  .vue-upload-file .vuf-success[_v-1e700349] {\n    color: #4a7; }\n  .vue-upload-file .vuf-icon3[_v-1e700349] {\n    position: relative;\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    top: 4px; }\n    .vue-upload-file .vuf-icon3[_v-1e700349]::after {\n      position: absolute;\n      top: 3px;\n      left: 6px;\n      width: 6px;\n      height: 10px;\n      border-width: 0 2px 2px 0;\n      border-color: #4a7;\n      border-style: solid;\n      -webkit-transform: rotate(45deg);\n              transform: rotate(45deg);\n      content: ''; }\n  .vue-upload-file .vuf-icon2[_v-1e700349] {\n    position: relative;\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    top: 4px; }\n    .vue-upload-file .vuf-icon2[_v-1e700349]::after, .vue-upload-file .vuf-icon2[_v-1e700349]::before {\n      content: '';\n      position: absolute;\n      top: 9px;\n      left: 4px;\n      width: 13px;\n      height: 2px;\n      background-color: #d10;\n      -webkit-transform: rotate(45deg);\n              transform: rotate(45deg); }\n    .vue-upload-file .vuf-icon2[_v-1e700349]::after {\n      -webkit-transform: rotate(-45deg);\n              transform: rotate(-45deg); }\n", ""]);
+	exports.push([module.id, "@-webkit-keyframes vue_upload_progress {\n  0% {\n    background-position: 0 0; }\n  100% {\n    background-position: 10px 0; } }\n\n@keyframes vue_upload_progress {\n  0% {\n    background-position: 0 0; }\n  100% {\n    background-position: 10px 0; } }\n\n@-webkit-keyframes vue_upload {\n  0% {\n    opacity: 0;\n    -webkit-transform: scale(0) translatey(-60px);\n            transform: scale(0) translatey(-60px); }\n  100% {\n    opacity: 1;\n    -webkit-transform: scale(1) translatey(0);\n            transform: scale(1) translatey(0); } }\n\n@keyframes vue_upload {\n  0% {\n    opacity: 0;\n    -webkit-transform: scale(0) translatey(-60px);\n            transform: scale(0) translatey(-60px); }\n  100% {\n    opacity: 1;\n    -webkit-transform: scale(1) translatey(0);\n            transform: scale(1) translatey(0); } }\n\n.vue-upload-file[_v-1e700349] {\n  position: absolute;\n  display: block;\n  box-sizing: border-box;\n  z-index: 999;\n  left: 50%;\n  margin-top: 12px;\n  margin-left: -140px;\n  padding: 12px 16px;\n  width: 280px;\n  background-color: #fff;\n  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);\n  border-top: 2px solid rgba(0, 0, 0, 0.8);\n  -webkit-animation: vue_upload 0.15s ease-in;\n          animation: vue_upload 0.15s ease-in; }\n  .vue-upload-file[_v-1e700349]::before {\n    position: absolute;\n    content: '';\n    top: -8px;\n    left: 132px;\n    width: 0;\n    height: 0;\n    border-bottom: 7px solid rgba(0, 0, 0, 0.8);\n    border-left: 7px solid transparent;\n    border-right: 7px solid transparent; }\n  .vue-upload-file .vuf-drop-area[_v-1e700349] {\n    position: relative;\n    padding: 10px;\n    height: 60px;\n    background-color: rgba(0, 0, 0, 0.03);\n    text-align: center;\n    border: 1px dashed #ddd; }\n    .vue-upload-file .vuf-drop-area .vuf-icon1[_v-1e700349] {\n      display: block;\n      margin: 0 auto 6px;\n      width: 32px;\n      height: 32px;\n      overflow: hidden; }\n      .vue-upload-file .vuf-drop-area .vuf-icon1 .vuf-icon1-arrow[_v-1e700349] {\n        display: block;\n        margin: 0 auto;\n        width: 0;\n        height: 0;\n        border-bottom: 11.2px solid #999;\n        border-left: 11.2px solid transparent;\n        border-right: 11.2px solid transparent; }\n      .vue-upload-file .vuf-drop-area .vuf-icon1 .vuf-icon1-body[_v-1e700349] {\n        display: block;\n        width: 9.6px;\n        height: 11.2px;\n        margin: 0 auto;\n        background-color: #999; }\n      .vue-upload-file .vuf-drop-area .vuf-icon1 .vuf-icon1-bottom[_v-1e700349] {\n        box-sizing: border-box;\n        display: block;\n        height: 9.6px;\n        border: 5px solid #999;\n        border-top: none; }\n    .vue-upload-file .vuf-drop-area .vuf-hint[_v-1e700349] {\n      font-size: 14px;\n      color: #999;\n      line-height: 30px; }\n    .vue-upload-file .vuf-drop-area .vuf-loading[_v-1e700349] {\n      font-size: 16px;\n      color: #999;\n      line-height: 30px; }\n    .vue-upload-file .vuf-drop-area .vuf-progress-wrap[_v-1e700349] {\n      display: block;\n      background-color: rgba(0, 0, 0, 0.14); }\n      .vue-upload-file .vuf-drop-area .vuf-progress-wrap .vuf-progress[_v-1e700349] {\n        position: relative;\n        margin-top: 12px;\n        display: block;\n        height: 3px;\n        background-color: #4a7;\n        box-shadow: 0 1px 3px 0 rgba(68, 170, 119, 0.3);\n        -webkit-transition: width 0.5s ease;\n        transition: width 0.5s ease;\n        background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);\n        background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);\n        background-size: 10px 10px;\n        -webkit-animation: vue_upload_progress 0.3s linear infinite;\n                animation: vue_upload_progress 0.3s linear infinite; }\n        .vue-upload-file .vuf-drop-area .vuf-progress-wrap .vuf-progress[_v-1e700349]::after {\n          content: '';\n          position: absolute;\n          display: block;\n          top: -2px;\n          right: -2px;\n          width: 5px;\n          height: 5px;\n          border: 1px solid rgba(255, 255, 255, 0.6);\n          box-shadow: 0 1px 4px 0 rgba(68, 170, 119, 0.7);\n          border-radius: 100%;\n          background-color: #4a7; }\n    .vue-upload-file .vuf-drop-area .vuf-no-supported-hint[_v-1e700349] {\n      display: block;\n      position: absolute;\n      top: 0;\n      left: 0;\n      padding: 10px 0;\n      width: 100%;\n      height: 60px;\n      line-height: 30px;\n      background-color: #eee;\n      text-align: center;\n      color: #888;\n      font-size: 14px; }\n    .vue-upload-file .vuf-drop-area[_v-1e700349]:hover {\n      cursor: pointer;\n      border-color: #ccc;\n      background-color: rgba(0, 0, 0, 0.06); }\n      .vue-upload-file .vuf-drop-area:hover .vuf-hint[_v-1e700349] {\n        color: #777; }\n  .vue-upload-file .vuf-error[_v-1e700349],\n  .vue-upload-file .vuf-success[_v-1e700349] {\n    display: block;\n    font-size: 14px;\n    line-height: 24px;\n    height: 24px;\n    color: #d10;\n    text-align: center;\n    vertical-align: top; }\n  .vue-upload-file .vuf-success[_v-1e700349] {\n    color: #4a7; }\n  .vue-upload-file .vuf-icon3[_v-1e700349] {\n    position: relative;\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    top: 4px; }\n    .vue-upload-file .vuf-icon3[_v-1e700349]::after {\n      position: absolute;\n      top: 3px;\n      left: 6px;\n      width: 6px;\n      height: 10px;\n      border-width: 0 2px 2px 0;\n      border-color: #4a7;\n      border-style: solid;\n      -webkit-transform: rotate(45deg);\n              transform: rotate(45deg);\n      content: ''; }\n  .vue-upload-file .vuf-icon2[_v-1e700349] {\n    position: relative;\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    top: 4px; }\n    .vue-upload-file .vuf-icon2[_v-1e700349]::after, .vue-upload-file .vuf-icon2[_v-1e700349]::before {\n      content: '';\n      position: absolute;\n      top: 9px;\n      left: 4px;\n      width: 13px;\n      height: 2px;\n      background-color: #d10;\n      -webkit-transform: rotate(45deg);\n              transform: rotate(45deg); }\n    .vue-upload-file .vuf-icon2[_v-1e700349]::after {\n      -webkit-transform: rotate(-45deg);\n              transform: rotate(-45deg); }\n", ""]);
 
 	// exports
 
@@ -18879,6 +18883,14 @@
 			value: {
 				'default': true
 			},
+			url: {
+				type: String,
+				'default': ''
+			},
+
+			params: {
+				'default': null
+			},
 
 			maxSize: {
 				'default': 2048
@@ -18891,38 +18903,52 @@
 			onlySingle: {
 				'default': false
 			},
-			url: {
+
+			langType: {
 				type: String,
-				'default': ''
+				'default': 'zh'
 			},
 
-			otherParams: {
-				'default': null
-			},
-			langConf: {
+			langExt: {
 				type: Object,
 				'default': null
 			}
 		},
 		data: function data() {
 			var that = this,
-			    langConf = that.langConf,
+			    langExt = that.langExt,
+			    langType = that.langType,
 			    isSupported = true,
-			    lang = {
-				hint: '点击，或将文件拖动至此处',
-				loading: '正在上传……',
-				noSupported: '浏览器不支持该功能，请使用IE10以上或其他现代浏览器！',
-				success: '上传成功',
-				fail: '上传失败',
-				error: {
-					onlyImg: '仅限图片格式',
-					onlySingle: '仅限单文件上传',
-					outOfSize: '单文件大小不能超过 '
+			    langBags = {
+				zh: {
+					hint: '点击，或将文件拖动至此处',
+					loading: '正在上传……',
+					noSupported: '浏览器不支持该功能，请使用IE10以上或其他现代浏览器！',
+					success: '上传成功',
+					fail: '上传失败',
+					error: {
+						onlyImg: '仅限图片格式',
+						onlySingle: '仅限单文件上传',
+						outOfSize: '单文件大小不能超过 '
+					}
+				},
+				en: {
+					hint: 'Click, or drag the file here',
+					loading: 'Uploading……',
+					noSupported: 'Browser does not support, please use IE10+ or other browsers',
+					success: 'Upload success',
+					fail: 'Upload failed',
+					error: {
+						onlyImg: 'Images only',
+						onlySingle: 'Single file only',
+						outOfSize: 'File exceeds size limit: '
+					}
 				}
-			};
+			},
+			    lang = langBags[langType] ? langBags[langType] : langBags['zh'];
 
-			if (langConf) {
-				(0, _assign2.default)(lang, langConf);
+			if (langExt) {
+				(0, _assign2.default)(lang, langExt);
 			}
 			if (typeof FormData != 'function') {
 				isSupported = false;
@@ -19034,7 +19060,7 @@
 			upload: function upload(files) {
 				var that = this,
 				    url = this.url,
-				    otherParams = this.otherParams,
+				    params = this.params,
 				    onlySingle = this.onlySingle,
 				    field = this.field,
 				    key = this.key,
@@ -19047,9 +19073,9 @@
 					fmData.append(field, files);
 				}
 
-				if ((typeof otherParams === 'undefined' ? 'undefined' : (0, _typeof3.default)(otherParams)) == 'object' && otherParams) {
-					(0, _keys2.default)(otherParams).forEach(function (k) {
-						fmData.append(k, otherParams[k]);
+				if ((typeof params === 'undefined' ? 'undefined' : (0, _typeof3.default)(params)) == 'object' && params) {
+					(0, _keys2.default)(params).forEach(function (k) {
+						fmData.append(k, params[k]);
 					});
 				}
 

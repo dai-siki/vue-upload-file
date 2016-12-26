@@ -3,6 +3,12 @@
 A file upload component for vue. (vue文件上传组件)
 
 
+## Change log (更新日志)
+#### @1.1.0
+- 多语言支持   langType: zh/en
+- 调整了Props命名  {otherParams => params, langConf => langExt}
+
+
 ## Demo（示例）
 [Click me （点我）](http://dai-siki.github.io/vue-upload-file/example/demo.html).
 
@@ -30,26 +36,41 @@ $ npm install vue-upload-file
 | key             |             |   0               | 类似于id，触发事件会带上（如果一个页面多个图片上传控件，可以做区分    |
 | value             | Boolean            |                  | 是否显示控件    |
 | url             | String            |  ''                | 上传地址    |
-| otherParams             | Object            |  null                | 要附带的其他数据，如 {k:v}    |
+| params             | Object            |  null                | 要附带的其他数据，如 {k:v}    |
 | maxSize             | Number            |  2048               | 单文件大小限制（kb）    |
 | onlyImg             | Boolean            |  false                | 仅限图片    |
 | onlySingle             | Boolean            | false                 | 仅限单文件上传    |
-| langConf             | Object            | defaultLang                 | 语言包配置    |
+| langType             | String            | 'zh'                 | zh/en 语言类型    |
+| langExt             | Object            |                  | 语言包扩展    |
 
-#### Default Lang（默认语言包）
+#### Language Package（语言包）
 ```js
-let defaultLang = {
-	hint: '点击，或将文件拖动至此处',
-	loading: '正在上传……',
-	noSupported: '浏览器不支持该功能，请使用IE10以上或其他现代浏览器！',
-	success: '上传成功',
-	fail: '上传失败',
-	error: {
-		onlyImg: '仅限图片格式',
-		onlySingle: '仅限单文件上传',
-		outOfSize: '单文件大小不能超过 ',
-	}
-};
+{
+	zh: {
+		hint: '点击，或将文件拖动至此处',
+		loading: '正在上传……',
+		noSupported: '浏览器不支持该功能，请使用IE10以上或其他现代浏览器！',
+		success: '上传成功',
+		fail: '上传失败',
+		error: {
+			onlyImg: '仅限图片格式',
+			onlySingle: '仅限单文件上传',
+			outOfSize: '单文件大小不能超过 ',
+		}
+	},
+	en: {
+	   hint: 'Click, or drag the file here',
+	   loading: 'Uploading……',
+	   noSupported: 'Browser does not support, please use IE10+ or other browsers',
+	   success: 'Upload success',
+	   fail: 'Upload failed',
+	   error: {
+		   onlyImg: 'Images only',
+		   onlySingle: 'Single file only',
+		   outOfSize: 'File exceeds size limit: '
+	   }
+   }
+}
 ```
 
 #### Example(使用示例)
@@ -62,11 +83,15 @@ let defaultLang = {
 
 <div id="app">
 	<a class="btn" @click="toggleShow">上传图片</a>
-	<my-upload url="/upload" field="img" key="1" max-size="500"
+	<my-upload url="/upload"
+		lang-type="en"
+		field="img"
+		key="1"
+		max-size="500"
 		:only-single="true"
 		:value="true"
 		:only-img="true"
-		:other-params="otherParams"></my-upload>
+		:params="params"></my-upload>
 </div>
 
 <script>
@@ -78,7 +103,7 @@ let defaultLang = {
 		el: '#app',
 		data: {
 			show: true,
-			otherParams: {
+			params: {
 				token: '123456798',
 				name: 'img'
 			}

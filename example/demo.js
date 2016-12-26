@@ -6,7 +6,8 @@ import myUpload from '../upload.vue';
 new Vue({
 	el: '#app',
 	data: {
-		show: true,
+		show1: false,
+		show2: false,
 		otherParams: {
 			token: '123456798',
 			name: 'img'
@@ -16,8 +17,11 @@ new Vue({
 		'my-upload': myUpload
 	},
 	methods: {
-		toggleShow() {
-			this.show = !this.show;
+		toggleShow1() {
+			this.show1 = !this.show1;
+		},
+		toggleShow2() {
+			this.show2 = !this.show2;
 		}
 	},
 	events: {

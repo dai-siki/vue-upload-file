@@ -12,7 +12,6 @@
 		}
 
 		body {
-			padding: 50px 20%;
 			font-family: '微软雅黑';
 		}
 
@@ -22,8 +21,23 @@
 		}
 
 		#app {
-			position: relative;
 			text-align: center;
+		}
+
+		.item{
+			position: relative;
+			width: 100px;
+			height: 40px;
+			margin: 150px auto;
+		}
+
+		.btn{
+			display: block;
+			width: 100px;
+			height: 40px;
+			line-height: 40px;
+			background-color: #eee;
+			cursor: pointer;
 		}
 
 		.wrap{
@@ -34,9 +48,29 @@
 
 <body>
 <div id="app">
-	<a class="btn" @click="toggleShow">上传图片</a>
-	<my-upload url="https://httpbin.org/post" :only-single="true"
-		:value="show" field="img" key="0" max-size="500" :only-img="true" :other-params="otherParams"></my-upload>
+	<div class="item">
+		<a class="btn" @click="toggleShow1">上传图片</a>
+		<my-upload url="https://httpbin.org/post"
+			:only-single="true"
+			:value="show1"
+			field="img"
+			key="0"
+			max-size="2048"
+			:only-img="true"
+			:params="otherParams"></my-upload>
+	</div>
+	<div class="item">
+		<a class="btn" @click="toggleShow2">Upload</a>
+		<my-upload url="https://httpbin.org/post"
+			lang-type="en"
+			:only-single="true"
+			:value="show2"
+			field="img"
+			key="0"
+			max-size="2048"
+			:only-img="true"
+			:params="otherParams"></my-upload>
+	</div>
 </div>
 
 <script src="demo-src.js"></script>
