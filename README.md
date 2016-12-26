@@ -5,8 +5,8 @@ A file upload component for vue. (vue文件上传组件)
 
 ## Change log (更新日志)
 #### @1.1.0
-- 多语言支持   langType: zh/en
-- 调整了Props命名  {otherParams => params, langConf => langExt}
+- 多语言支持   {langType: zh/en}
+- 调整了Props命名  【otherParams => params, langConf => langExt】
 
 
 ## Demo（示例）
